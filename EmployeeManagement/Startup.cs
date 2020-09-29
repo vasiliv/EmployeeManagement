@@ -25,34 +25,56 @@ namespace EmployeeManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        //public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger <Startup> logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger <Startup> logger)
         {
             if (env.IsDevelopment())
             {
+                //DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions()
+                //{
+                //    SourceCodeLineCount = 10
+                //};
+                //app.UseDeveloperExceptionPage(developerExceptionPageOptions);
                 app.UseDeveloperExceptionPage();
             }
+            //DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            //defaultFilesOptions.DefaultFileNames.Clear();
+            //defaultFilesOptions.DefaultFileNames.Add("foo.html");
+            //app.UseDefaultFiles(); // must be registered before app.UseStaticFiles(); 
+            //app.UseDefaultFiles(defaultFilesOptions);
 
-            app.Use(async (context, next)  =>
-            {
-                //await context.Response.WriteAsync(_config["MyKey"]);
-                //await context.Response.WriteAsync("Hello from first middleware");
-                logger.LogInformation("Middleware1: incoming request");
-                await next();
-                logger.LogInformation("Middleware1: outgoing response");
-            });
-            app.Use(async (context, next) =>
-            {
-                logger.LogInformation("Middleware2: incoming request");
-                await next();
-                logger.LogInformation("Middleware2: outgoing response");
-            });
+            //FileServerOptions fileServerOptions = new FileServerOptions();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
+            //app.UseFileServer(fileServerOptions);
+
+            //app.UseFileServer();
+            app.UseStaticFiles();
+
+
+            //app.Use(async (context, next)  =>
+            //{
+            //    //await context.Response.WriteAsync(_config["MyKey"]);
+            //    //await context.Response.WriteAsync("Hello from first middleware");
+            //    logger.LogInformation("Middleware1: incoming request");
+            //    await next();
+            //    logger.LogInformation("Middleware1: outgoing response");
+            //});
+            //app.Use(async (context, next) =>
+            //{
+            //    logger.LogInformation("Middleware2: incoming request");
+            //    await next();
+            //    logger.LogInformation("Middleware2: outgoing response");
+            //});
             app.Run(async (context) =>
             {
                 //await context.Response.WriteAsync(_config["MyKey"]);
                 //await context.Response.WriteAsync("Hello from second middleware");
-                await context.Response.WriteAsync("Middleware3: request handled and response produced");
-                logger.LogInformation("Middleware3: request handled and response produced");
+                //await context.Response.WriteAsync("Middleware3: request handled and response produced");
+                //logger.LogInformation("Middleware3: request handled and response produced");
+                //throw new Exception("Some error processing request");
+                //await context.Response.WriteAsync("Hello world!");
+                await context.Response.WriteAsync("Hosting environment " + env.EnvironmentName);
             });
         }
     }
