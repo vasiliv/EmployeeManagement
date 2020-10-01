@@ -24,10 +24,12 @@ namespace EmployeeManagement.Controllers
         public ViewResult Details()
         {
             Employee model = _employeeRepository.GetEmployee(1);
-            //return View(model);
+            ViewData["Employee"] = model;
+            ViewData["PageDetails"] = "Employee Details";
+            return View(model);
             //return View("Test");
             //return View("MyViews/Test.cshtml");
-            return View("~/MyViews/Test.cshtml");
+            //return View("~/MyViews/Test.cshtml");
         }
         //public JsonResult Index()
         //{
