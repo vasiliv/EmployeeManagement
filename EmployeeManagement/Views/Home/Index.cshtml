@@ -1,37 +1,45 @@
 ﻿@model IEnumerable<EmployeeManagement.Models.Employee>
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee List";
+}
+
+
+@*წავშალეთ იმიტომ რომ ლეიაუთი გამოვიყენოთ: _Layout.cshtml*@
+@*<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title></title>
     </head>
-    <body>
-        <table>
-            @*table head*@
-            <thead>
-                <tr>
-                    @*th - table header*@
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                </tr>
-            </thead>
-            @*table body*@
-            <tbody>
-                @foreach(var employee in Model)
-                {
-                <tr>
-                    <td>
-                        @employee.Id
-                    </td>
-                    <td>
-                        @employee.Name
-                    </td>
-                    <td>
-                        @employee.Department
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </body>
-    </html>
+    <body>*@
+
+<table>
+    @*table head*@
+    <thead>
+        <tr>
+            @*th - table header*@
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    @*table body*@
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>
+                    @employee.Id
+                </td>
+                <td>
+                    @employee.Name
+                </td>
+                <td>
+                    @employee.Department
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*</body>
+    </html>*@
