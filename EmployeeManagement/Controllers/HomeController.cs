@@ -25,14 +25,17 @@ namespace EmployeeManagement.Controllers
             var model = _employeeRepository.GetAllEmployees();
             return View(model);
         }
-        public ViewResult Details()
+        //public ViewResult Details()
+        public ViewResult Details(int id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
                 Employee = _employeeRepository.GetEmployee(1),
+                //Employee = _employeeRepository.GetEmployee(id),
                 PageTitle = "Employee Details"
-            }; 
-            Employee model = _employeeRepository.GetEmployee(1);
+            };
+            Employee model = _employeeRepository.GetEmployee(id);
+            //Employee model = _employeeRepository.GetEmployee(1);
             //ViewData["Employee"] = model;
             //ViewData["PageTitle"] = "Employee Details";
             //ViewBag.Employee = model;
