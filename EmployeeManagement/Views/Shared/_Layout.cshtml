@@ -9,5 +9,13 @@
     <div>
         @RenderBody()
     </div>
+    @*We do not need this script in every view*@
+    @*<script src="~/js/CustomScript.js"></script>*@
+    @*@RenderSection("Scripts", required: false)*@
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true)
+    }
+
 </body>
 </html>
