@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
-    //public class HomeController
+    //[Route("Home")]
+    //[Route("[controller]")]
+    //[Route("[controller]/[action]")]
+    
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -17,6 +20,13 @@ namespace EmployeeManagement.Controllers
         {
             _employeeRepository = employeeRepository;
         }
+        //[Route("")]
+        //[Route("~/")]
+        //[Route("~/Home")]
+        //[Route("Home")]
+        //[Route("Home/Index")]
+        //[Route("Index")]
+        //[Route("[action]")]
         //public string Index()
         public ViewResult Index()
         {
@@ -25,16 +35,20 @@ namespace EmployeeManagement.Controllers
             var model = _employeeRepository.GetAllEmployees();
             return View(model);
         }
+        //[Route("Home/Details/{id?}")]
+        //[Route("Details/{id?}")]
+        //[Route("[action]/{id?}")]
+        //[Route("{id?}")]
         //public ViewResult Details()
-        public ViewResult Details(int id)
+        public ViewResult Details(int? id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(1),
-                //Employee = _employeeRepository.GetEmployee(id),
+                //Employee = _employeeRepository.GetEmployee(1),
+                Employee = _employeeRepository.GetEmployee(id??1),
                 PageTitle = "Employee Details"
             };
-            Employee model = _employeeRepository.GetEmployee(id);
+            //Employee model = _employeeRepository.GetEmployee(id);
             //Employee model = _employeeRepository.GetEmployee(1);
             //ViewData["Employee"] = model;
             //ViewData["PageTitle"] = "Employee Details";

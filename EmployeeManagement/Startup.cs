@@ -55,6 +55,7 @@ namespace EmployeeManagement
             //app.UseFileServer();
             app.UseStaticFiles();
             //app.UseMvcWithDefaultRoute();
+            //app.UseMvc();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
