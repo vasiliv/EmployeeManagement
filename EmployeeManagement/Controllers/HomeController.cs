@@ -64,5 +64,9 @@ namespace EmployeeManagement.Controllers
         //{
         //    return Json(new { id = 1, name = "Vasil"});            
         //}
+        public ViewResult Create()
+        {
+            return View();
+        }
     }
 }
